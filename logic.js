@@ -41,14 +41,30 @@ function initMap() {
 
 async function getWeather(lat, lon) {
     // Obtener el clima actual usando la API de Open Meteo
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`);
-    console.log(lat)
-    console.log(lon)
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,precipitation,rain,wind_speed_10m&hourly=temperature_2m,wind_speed_10m
+`);
     const data = await response.json();
+    console.log(data);
     
     // Actualizar el contenido del elemento con la temperatura
     const temperatureElement = document.getElementById("temperature");
-    temperatureElement.textContent = `Temperatura: ${data.current.temperature_2m} °C`;
+    const humidity = document.getElementById("humidity-text");
+    const wind = document.getElementById("wind-text");
+    const precipitation = document.getElementById("precipitation-text");
+    const logo = document.getElementById("logo-img")
+
+
+    temperatureElement.textContent = `${data.current.temperature_2m} °C`;
+    humidity.textContent = `${data.current.relative_humidity_2m}%`;
+    wind.textContent = `${data.current.wind_speed_10m} km/h`;
+    precipitation.textContent = `${data.current.rain}`;
+
+    if (data.current.rain > 0){
+        logo.src = "assets/rain-icon.gif";
+    }
+    else {
+        logo.src = "assets/sun-icon.gif";
+    }
 }
 
 // Cargar el mapa cuando se carga la página

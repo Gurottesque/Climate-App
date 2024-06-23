@@ -9,9 +9,47 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input type="text" name="input" class="Autocomplete SearchBox" id="search">
-    <div id="map"></div>
-    <div id="temperature"></div>
-    
+
+    <main class="main-container">
+
+
+        
+        <header class="info-header container">
+            <div id="city-notification">
+            </div>
+            <div id="climate">
+                <div id="temperature"></div>
+                <div id="climate-logo"><img src="assets/sun-icon.gif" id="logo-img" alt=""></div>
+            </div>
+
+        </header>
+
+        <div class="map container">
+            <input type="text" name="input" class="Autocomplete SearchBox input" id="search">
+            <div id="map"></div>
+        </div>
+
+        <div class="weather-information container">
+            <div id="humidity">
+                <div id="humidity-text"></div>
+                <div id="humidity-icon"></div>
+
+            </div>
+            <div id="wind">
+                <div id="wind-text"></div>
+                <div id="wind-icon"></div>
+                
+
+            </div>
+            <div id="precipitation">
+                <div id="precipitation-text"></div>
+                <div id="precipitation-icon"></div>
+                
+
+            </div>
+        </div>
+
+       
+    </main>
 </body>
 </html>
